@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <p id="test"></p>
+    <table class="table style">
+        <tr class="id style"></tr>
+        <tr class="name style"></tr>
+        <tr class="username style"></tr>
+        <tr class="email style"></tr>
+    </table>
+    <script>
+
+        var requestURL = 'https://jsonplaceholder.typicode.com/users';
+        var request = new XMLHttpRequest();
+        request.open('Get',requestURL);
+        request.responseType = 'json';
+        request.send();
+        request.onload =function(){
+            var test = request.response;
+            createTable(test);
+        }
+        
+        function createTable(jsonObj){
+            var myColumn = document.querySelector('.id');
+            for (let i=0 ; i<10;i++){
+                var td = document.createElement('td');
+                td.textContent = jsonObj[i].id;
+                myColumn.appendChild(td);
+            } 
+
+            var myColumn = document.querySelector('.name');
+            for (let i=0 ; i<10;i++){
+                var td = document.createElement('td');
+                td.textContent = jsonObj[i].name;
+                myColumn.appendChild(td);
+            } 
+
+            var myColumn = document.querySelector('.username');
+            for (let i=0 ; i<10;i++){
+                var td = document.createElement('td');
+                td.textContent = jsonObj[i].username;
+                myColumn.appendChild(td);
+            } 
+              
+            
+            var myColumn = document.querySelector('.email');
+            for (let i=0 ; i<10;i++){
+                var td = document.createElement('td');
+                td.textContent = jsonObj[i].email;
+                myColumn.appendChild(td);
+            }   
+
+        }
+            
+            
+            
+    </script>
+</body>
+</html>
